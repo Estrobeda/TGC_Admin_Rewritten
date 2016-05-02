@@ -1,4 +1,5 @@
-{
+{   
+	"Comment": "Note the bot can handle multiple servers and roles but the indexes must match",
 	"Server Name": ["The Geek Corner"],
 	"Server ID": ["149632998055215105"],
 	"Admin Roles": [["151681840724443137"]],
