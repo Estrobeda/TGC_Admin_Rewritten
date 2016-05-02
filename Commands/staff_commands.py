@@ -9,6 +9,7 @@ class Staff:
     @permission.is_staff()
     @client.command(pass_context = True)
     async def shutdown(self):
+        '''Shutdowns the bot //Please do not use unless you have to'''
         print("ShutDown")
         await self.bot.logout()
         raise SystemExit
