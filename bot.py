@@ -29,8 +29,8 @@ try:
     prefix = str(os.environ["TGC_Prefix"])
 except Exception as e:
     print(e);
-    bot = commands.Bot([setup["mention"], setup["prefix"]], description = info["description"], pm_help = True)
-    prefix = setup["prefix"]
+    bot = commands.Bot([setup["Mention"], setup["Prefix"]], description = info["Description"], pm_help = True)
+    prefix = setup["Prefix"]
 bot.commands_executed = 0
 bot.unique_users = 0
 
