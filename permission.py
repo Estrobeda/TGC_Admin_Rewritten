@@ -16,9 +16,7 @@ def check_if_staff(ctx):
 def check_if_admin(ctx):
     for i, server in enumerate(servers["Server ID"]):
         for role in servers["Admin Roles"][i]:
-            print(role)
             for user_role in ctx.message.author.roles:
-                print('ID: {0} USER_ID: {1}'.format(role, user_role.id))
                 if str(user_role.id) == str(role):
                     return True
     return False

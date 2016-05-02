@@ -12,6 +12,7 @@ class General:
 
     @client.command(pass_context = True)
     async def whois(self, ctx):
+        """The bot gather the information about someone and sends it to you, Usage [prefix]whois [@user]"""
         if not "@here" in ctx.message.content or not "@everyone" in ctx.message.content:
             for mention in ctx.message.mentions:
         	    await self.bot.say('Username: {0.name}\nNickname: {0.nick}\nUserID: {0.id}\nUserDiscriminator: {0.discriminator}\nAvatar: {0.avatar}\nJoined the server: {0.joined_at}\nBot: {0.bot}'.format(mention))
