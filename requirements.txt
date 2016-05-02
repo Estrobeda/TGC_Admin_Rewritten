@@ -1,0 +1,5 @@
+aiohttp
+websockets
+cffi
+PyNaCl
+git+https://github.com/Rapptz/discord.py@async

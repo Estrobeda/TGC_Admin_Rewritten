@@ -32,7 +32,7 @@ except Exception as e:
     bot = commands.Bot([setup["Mention"], setup["Prefix"]], description = info["Description"], pm_help = True)
     prefix = setup["Prefix"]
 bot.commands_executed = 0
-bot.unique_users = 0
+bot.unique_users = []
 
 #Data logging
 discord_logger = logging.getLogger('discord')
@@ -44,15 +44,17 @@ log.addHandler(handler)
 
 @bot.event
 async def on_ready():
-    bot.change_status(game = discord.Game(game = ':help'))
+    bot.change_status(game = discord.Game(name = ':help')) #!<<<<<< DOSNT CURRENTLY WORK =( GOTO FIX THIS ASAP
     print('\Bot Log/')
     print('    \Bot Login/')
     print('    Logged in as : {0.user.name} {0.user.id}'.format(bot))
-    print('    \Loading Commands')
+    print('    \Loading Commands/')
     try:
         for extension in extensions["Commands"]:
-            bot.load_cog(extensions)
-    except:
+            bot.load_extension(extension)
+            print('    {}'.format(extension))
+    except Exception as e:
+        log.info('[!EXTENSION ERROR!] {}'.format(e))
         print('    No commands to be loaded')
 
 @bot.event
@@ -70,14 +72,14 @@ async def on_command(cmd, ctx):
     command = ctx.message
     try:
         if not ctx.message.author in bot.unique_users:
-            bot.unique_users += 1
+            bot.unique_users.append(ctx.message.author)
         bot.process_commands(cmd)
         bot.commands_executed += 1
-        log.info('{0}: {1.author.name} in {2}: {1.content}'.format(message.timestamp.replace(microsecond = 0 ), message, destination))
-        print('{0}: {1.author.name} in {2}: {1.content}'.format(message.timestamp.replace(microsecond = 0 ), message, destination))
-    except:
-        log.info('	[!COMMAND_ERROR!] {0}: {1.author} {1.server} >>> Command: {1.content} Error: {2}'.format(ctx.message.timestamp.replace(microsecond = 0 ), ctx.message, error))
-        print('	[!COMMAND_ERROR!] {0}: {1.author} in {1.server} >>> Command: {1.content} Error: {2}'.format(ctx.message.timestamp.replace(microsecond = 0 ), ctx.message, error))
+        log.info('{0}: {1.author.name} {1.content}'.format(ctx.message.timestamp.replace(microsecond = 0 ), ctx.message))
+        print('{0}: {1.author.name} {1.content}'.format(ctx.message.timestamp.replace(microsecond = 0 ), ctx.message))
+    except Exception as e:
+       # log.info('	[!COMMAND_ERROR!] {0}: {1.author} {1.server} >>> Command: {1.content} Error: {2}'.format(ctx.message.timestamp.replace(microsecond = 0 ), ctx.message, e))
+        print('	[!LIVE_COMMAND_ERROR!] {0}: {1.author} in {1.server} >>> Command: {1.content} Error: {2}'.format(ctx.message.timestamp.replace(microsecond = 0 ), ctx.message, e))
 
 @bot.event
 async def on_command_error(error, ctx):
