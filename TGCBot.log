@@ -1,1 +1,34 @@
-2016-05-02 06:54:55: Estrobeda ;help
+Task exception was never retrieved
+future: <Task finished coro=<_run_event() done, defined at C:\Program Files (x86)\Python35-32\lib\site-packages\discord\client.py:264> exception=SystemExit()>
+Traceback (most recent call last):
+  File "bot.py", line 92, in <module>
+    bot.run(str(os.environ["TGC_Token"]))
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\discord\client.py", line 638, in run
+    self.loop.run_until_complete(self.start(*args))
+  File "C:\Program Files (x86)\Python35-32\lib\asyncio\base_events.py", line 325, in run_until_complete
+    self.run_forever()
+  File "C:\Program Files (x86)\Python35-32\lib\asyncio\base_events.py", line 295, in run_forever
+    self._run_once()
+  File "C:\Program Files (x86)\Python35-32\lib\asyncio\base_events.py", line 1254, in _run_once
+    handle._run()
+  File "C:\Program Files (x86)\Python35-32\lib\asyncio\events.py", line 125, in _run
+    self._callback(*self._args)
+  File "C:\Program Files (x86)\Python35-32\lib\asyncio\tasks.py", line 301, in _wakeup
+    self._step()
+  File "C:\Program Files (x86)\Python35-32\lib\asyncio\tasks.py", line 239, in _step
+    result = coro.send(None)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\discord\client.py", line 267, in _run_event
+    yield from getattr(self, event)(*args, **kwargs)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\discord\ext\commands\bot.py", line 616, in on_message
+    yield from self.process_commands(message)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\discord\ext\commands\bot.py", line 608, in process_commands
+    yield from command.invoke(ctx)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\discord\ext\commands\core.py", line 380, in invoke
+    yield from injected(*ctx.args, **ctx.kwargs)
+  File "C:\Program Files (x86)\Python35-32\lib\site-packages\discord\ext\commands\core.py", line 47, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\rickard.ostlund\Desktop\Bots\TGC_Admin_Rewrite\Commands\staff_commands.py", line 14, in shutdown
+    raise SystemExit
+SystemExit
+Task was destroyed but it is pending!
+task: <Task pending coro=<Queue.get() done, defined at C:\Program Files (x86)\Python35-32\lib\asyncio\queues.py:156> wait_for=<Future cancelled>>

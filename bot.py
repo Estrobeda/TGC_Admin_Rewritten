@@ -17,8 +17,8 @@ from discord.ext import commands
 try:
     setup = json.loads(open('setup.json','r').read())
 except Exception as e:
-    print('If you dont use the json setups you can ignore this Error')
-    print(e, '\n\n')
+    print('If you dont use setup.json you can ignore this error')
+    print(e)
 finally:
     info = json.loads(open('info.json','r').read())
     extensions = json.loads(open('extensions.json','r').read())
