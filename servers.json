@@ -2,6 +2,7 @@
 	"Comment": "Note the bot can handle multiple servers and roles but the indexes must match",
 	"Server Name": ["The Geek Corner"],
 	"Server ID": ["149632998055215105"],
+	"Owner ID": "136902948138647552",
 	"Admin Roles": [["151681840724443137"]],
 	"Mod Roles": [["151681882600243201"]],
 	"Welcome Channel": [["149632998055215105"]],

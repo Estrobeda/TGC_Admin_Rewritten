@@ -1,4 +1,5 @@
 {
 	"Commands": ["Commands.general_commands",
+	             "Commands.music_commands",
 	             "Commands.staff_commands"]	
 }

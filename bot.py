@@ -31,6 +31,7 @@ except Exception as e:
     print(e);
     bot = commands.Bot([setup["Mention"], setup["Prefix"]], description = info["Description"], pm_help = True)
     prefix = setup["Prefix"]
+
 bot.commands_executed = 0
 bot.unique_users = []
 
@@ -49,13 +50,13 @@ async def on_ready():
     print('    \Bot Login/')
     print('    Logged in as : {0.user.name} {0.user.id}'.format(bot))
     print('    \Loading Commands/')
-    try:
-        for extension in extensions["Commands"]:
+    for extension in extensions["Commands"]:
+        try:
             bot.load_extension(extension)
             print('    {}'.format(extension))
-    except Exception as e:
-        log.info('[!EXTENSION ERROR!] {}'.format(e))
-        print('    No commands to be loaded')
+        except Exception as e:
+            log.info('[!EXTENSION ERROR!] {}'.format(e))
+            print('    Couldnt load command {}'.format(extension))
 
 @bot.event
 async def on_member_join(member):
@@ -65,7 +66,7 @@ async def on_member_join(member):
             print(servers["Welcome Channel"][i])
             for channel in servers["Welcome Channel"][i]:
                 print('{0.name} Joined the server, Sending welcome message to {1}'.format(member, channel))
-                await bot.send_message(member.server.get_channel(channel), info["Welcome Message"] + member +  member.server.name)
+                await bot.send_message(member.server.get_channel(channel), info["Welcome Message"] + member.mention +  member.server.name)
 
 @bot.event
 async def on_command(cmd, ctx):
